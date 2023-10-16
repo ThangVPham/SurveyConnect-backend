@@ -16,10 +16,10 @@ app.use(
 app.use(compression());
 app.use(cookieParser());
 const server = http.createServer(app);
-
-server.listen(5000, () => {
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => {
   ConnectToDb();
-  console.log(`Server running on port 5000`);
+  console.log(`Server running on port ${PORT}`);
 });
 
 app.use("/api/surveys", SurveyRoutes);

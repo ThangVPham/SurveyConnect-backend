@@ -24,7 +24,7 @@ router.get("/:id", async (req: express.Request, res: express.Response) => {
   console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: ${req.method} - Get Survey: ${id}`);
   try {
     const survey = await Survey.findOne({ _id: id });
-    console.log(`${req.method} - Survey ID: ${id}`);
+    console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}:${req.method} - Survey ID: ${id}`);
     res.json(survey);
   } catch (e) {
     console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: ${e}`);

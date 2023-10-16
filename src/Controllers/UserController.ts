@@ -46,7 +46,7 @@ async function Login(req: express.Request, res: express.Response) {
   const user = await UserModel.findOne({ email });
 
   if (user && (await bcrypt.compare(password, user.password))) {
-    console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: Login Successful`);
+    console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: User ${user.email} - Login Successful`);
     res.status(200).json({
       token: GenerateToken(user._id.toString()),
       message: "Login Successful.",

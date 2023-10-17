@@ -1,6 +1,7 @@
+import ISurvey from "Interfaces/ISurvey.ts";
 import mongoose from "mongoose";
 
-const surveySchema = new mongoose.Schema({
+const surveySchema = new mongoose.Schema<ISurvey>({
   surveyName: String,
   surveyOwner: String,
   organization: String,
@@ -9,15 +10,19 @@ const surveySchema = new mongoose.Schema({
   activeStatus: Boolean,
   dateEnd: Date,
   instructionMessage: String,
-  responses: [
-    {
-      question: String,
-      answer: String,
-    },
-  ],
+  responses: {
+    type: [
+      {
+        question: String,
+        answer: String,
+      },
+    ],
+    default: [],
+  },
   questions: [
     {
       questionType: String,
+      id: Number,
       question: String,
       options: [String],
       correctOption: String,
@@ -28,4 +33,4 @@ const surveySchema = new mongoose.Schema({
 });
 const Survey = mongoose.model("survey", surveySchema);
 
-export { Survey };
+export default Survey;

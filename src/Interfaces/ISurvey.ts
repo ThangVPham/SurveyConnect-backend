@@ -1,7 +1,7 @@
 export default interface ISurvey {
   surveyName: string;
   surveyOwner: string;
-  organization: string;
+  organization: { type: string; default: "" };
   surveyType: string;
   description: string;
   activeStatus: boolean;
@@ -16,6 +16,7 @@ interface Response {
   answer: string;
 }
 interface Question {
+  id: number;
   questionType: string;
   question: string;
   options: string[];

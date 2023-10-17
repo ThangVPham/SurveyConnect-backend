@@ -1,5 +1,6 @@
+import IUser from "Interfaces/IUser.ts";
 import mongoose from "mongoose";
-const UserSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema<IUser>({
   userName: { type: String, default: "User" },
   email: String,
   password: String,
@@ -10,7 +11,7 @@ const UserSchema = new mongoose.Schema({
     type: [
       {
         surveyName: String,
-        surveyOwner: String,
+        surveyOwner: { type: String, default: "" },
         organization: String,
         surveyType: String,
         description: { type: String, default: "" },
@@ -29,6 +30,7 @@ const UserSchema = new mongoose.Schema({
         questions: {
           type: [
             {
+              id: { type: Number },
               questionType: { type: String, default: "" },
               question: { type: String, default: "" },
               options: { type: [String], default: [] },

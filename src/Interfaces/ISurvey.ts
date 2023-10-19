@@ -1,4 +1,7 @@
+import { ObjectId } from "mongoose";
+
 export default interface ISurvey {
+  _id: ObjectId;
   surveyName: string;
   surveyOwner: string;
   organization: { type: string; default: "" };

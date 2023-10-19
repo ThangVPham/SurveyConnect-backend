@@ -7,24 +7,29 @@ import ISurvey from "../Interfaces/ISurvey.ts";
 import jwt from "jsonwebtoken";
 import express from "express";
 const router = express.Router();
-const date = new Date();
 
 router.get("/", async (req: express.Request, res: express.Response) => {
   try {
+    const { id }: any = jwt.verify(req.headers.authorization, process.env.JWT_SECRET);
     console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: ${req.method} - Get All Surveys`);
-    const allSurveys = await Survey.find();
-    res.json(allSurveys);
+    const user: IUser = await UserModel.findOne({ _id: id });
+
+    res.json(user.surveys);
   } catch (e) {
     console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: ${e}`);
     res.status(500).json({ message: e });
   }
 });
 router.get("/:id", async (req: express.Request, res: express.Response) => {
-  const id = req.params.id;
-  console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: ${req.method} - Get Survey: ${id}`);
+  const surveyId = req.params.id;
+  console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: ${req.method} - Get Survey: ${surveyId}`);
   try {
-    const survey = await Survey.findOne({ _id: id });
-    console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}:${req.method} - Survey ID: ${id}`);
+    const { id }: any = jwt.verify(req.headers.authorization, process.env.JWT_SECRET);
+    const user: IUser = await UserModel.findOne({ _id: id });
+    console.log(user.surveys);
+    const survey = user.surveys.find((survey) => survey._id.toString() === surveyId);
+    console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}:${req.method} - Survey ID: ${surveyId}`);
+    console.log(survey);
     res.json(survey);
   } catch (e) {
     console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: ${e}`);

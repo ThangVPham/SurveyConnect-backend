@@ -1,0 +1,340 @@
+[
+  {
+    "surveyName": "Cleaning Products Survey",
+    "surveyOwner": "",
+    "organization": "Hallmark Housekeeping Service",
+    "surveyType": "Market",
+    "description": "Comprehensive study designed to gather feedback and insights from consumers regarding their preferences, satisfaction levels, and usage habits related to various cleaning products. This research typically includes questions about product effectiveness, safety, scent, packaging, and pricing, aiming to provide valuable data to manufacturers and marketers for product improvement and targeted marketing strategies.",
+    "activeStatus": true,
+    "dateEnd": "2024-06-08T00:00:00.000Z",
+    "instructionMessage": "1. Please take a few minutes to complete this survey about cleaning products. Your honest feedback will help us better understand your preferences and needs in this category.\\n 2. We value your input! Kindly share your opinions and experiences with cleaning products by answering the following questions. Your responses will assist us in providing you with products that best meet your expectations.\\n 3. Thank you for participating in our cleaning product survey. Your insights are important to us, so please respond candidly to the questions below, helping us enhance our offerings to better serve your cleaning needs.",
+    "responses": [],
+    "questions": [
+      {
+        "id": 0,
+        "questionType": "MC",
+        "question": "Which name do you prefer for an All Purpose Cleaner?",
+        "options": ["Earth Kind", "Kind Clean", "Kind N Klean", "Shine", "Mary Magic"],
+        "correctOption": "",
+        "imgURL": [],
+        "imgDesc": [],
+        "_id": "652e9ced1d86cbabb346593f"
+      },
+      {
+        "id": 30,
+        "questionType": "Checkbox",
+        "question": "What form of Multi-Purpose household cleaner do you usually buy?",
+        "options": ["Spray-bottle", "Wipes", "Liquid (pour into a bucket of water)"],
+        "correctOption": "",
+        "imgURL": [],
+        "imgDesc": [],
+        "_id": "652e9ced1d86cbabb3465940"
+      },
+      {
+        "id": 47,
+        "questionType": "MC",
+        "question": "What type of bottle do you prefer?",
+        "options": ["Industrial Shape", "Tall Cylinder"],
+        "correctOption": "",
+        "imgURL": [],
+        "imgDesc": [],
+        "_id": "652e9ced1d86cbabb3465941"
+      }
+    ],
+    "_id": "652e9ced1d86cbabb346593e"
+  },
+  {
+    "surveyName": "Employee Satisfaction Survey",
+    "surveyOwner": "",
+    "organization": "Acme Incorporated",
+    "surveyType": "Opinion",
+    "description": "The purpose of this survey is to collect feedback on your satisfaction as an employee. It will take only 3 to 4 minutes. Your feedback will be used to help us improve employee experiences. ",
+    "activeStatus": true,
+    "dateEnd": "2024-12-31T00:00:00.000Z",
+    "instructionMessage": "",
+    "responses": [],
+    "questions": [
+      {
+        "id": 5,
+        "questionType": "MC",
+        "question": "How satisfied or dissatisfied are you with your ability to do interesting work in your role?",
+        "options": [
+          "Extremely satisfied",
+          "Moderately satisfied",
+          "Slightly satisfied",
+          "Neither satisfied or dissatisfied",
+          "Slightly dissatisfied",
+          "Moderately dissatisfied",
+          "Extremely dissatisfied"
+        ],
+        "correctOption": "",
+        "imgURL": [],
+        "imgDesc": [],
+        "_id": "652ed220851aa38fa98f6002"
+      },
+      {
+        "id": 315,
+        "questionType": "MC",
+        "question": "How satisfied or dissatisfied are you with your ability to apply your skills in this role?",
+        "options": [
+          "Extremely satisfied",
+          "Moderately satisfied",
+          "Slightly satisfied",
+          "Neither satisfied or dissatisfied",
+          "Slightly dissatisfied",
+          "Moderately dissatisfied",
+          "Extremely dissatisfied"
+        ],
+        "correctOption": "",
+        "imgURL": [],
+        "imgDesc": [],
+        "_id": "652ed220851aa38fa98f6003"
+      },
+      {
+        "id": 354,
+        "questionType": "MC",
+        "question": "How satisfied or dissatisfied are you with your current workload?",
+        "options": [
+          "Extremely satisfied",
+          "Moderately satisfied",
+          "Slightly satisfied",
+          "Neither satisfied or dissatisfied",
+          "Slightly dissatisfied",
+          "Moderately dissatisfied",
+          "Extremely dissatisfied"
+        ],
+        "correctOption": "",
+        "imgURL": [],
+        "imgDesc": [],
+        "_id": "652ed220851aa38fa98f6004"
+      },
+      {
+        "id": 357,
+        "questionType": "MC",
+        "question": "How satisfied or dissatisfied are you with your opportunities for career progression?",
+        "options": [
+          "Extremely satisfied",
+          "Moderately satisfied",
+          "Slightly satisfied",
+          "Neither satisfied or dissatisfied",
+          "Slightly dissatisfied",
+          "Moderately dissatisfied",
+          "Extremely dissatisfied"
+        ],
+        "correctOption": "",
+        "imgURL": [],
+        "imgDesc": [],
+        "_id": "652ed220851aa38fa98f6005"
+      },
+      {
+        "id": 360,
+        "questionType": "MC",
+        "question": "How satisfied or dissatisfied are you with the physical environment at your workplace?",
+        "options": [
+          "Extremely satisfied",
+          "Moderately satisfied",
+          "Slightly satisfied",
+          "Neither satisfied or dissatisfied",
+          "Slightly dissatisfied",
+          "Moderately dissatisfied",
+          "Extremely dissatisfied"
+        ],
+        "correctOption": "",
+        "imgURL": [],
+        "imgDesc": [],
+        "_id": "652ed220851aa38fa98f6006"
+      },
+      {
+        "id": 363,
+        "questionType": "MC",
+        "question": "How satisfied or dissatisfied are you with your relationship with your manager?",
+        "options": [
+          "Extremely satisfied",
+          "Moderately satisfied",
+          "Slightly satisfied",
+          "Neither satisfied or dissatisfied",
+          "Slightly dissatisfied",
+          "Moderately dissatisfied",
+          "Extremely dissatisfied"
+        ],
+        "correctOption": "",
+        "imgURL": [],
+        "imgDesc": [],
+        "_id": "652ed220851aa38fa98f6007"
+      },
+      {
+        "id": 374,
+        "questionType": "MC",
+        "question": "Overall, how satisfied or dissatisfied are you with your current employer?",
+        "options": [
+          "Extremely satisfied",
+          "Moderately satisfied",
+          "Slightly satisfied",
+          "Neither satisfied or dissatisfied",
+          "Slightly dissatisfied",
+          "Moderately dissatisfied",
+          "Extremely dissatisfied"
+        ],
+        "correctOption": "",
+        "imgURL": [],
+        "imgDesc": [],
+        "_id": "652ed220851aa38fa98f6008"
+      }
+    ],
+    "_id": "652ed220851aa38fa98f6001"
+  },
+  {
+    "surveyName": "Teacher Satisfaction Survey",
+    "surveyOwner": "",
+    "organization": "Public School",
+    "surveyType": "Opinion",
+    "description": "Make the teachers happy by attending to their needs and listening to their feedback by using this Teacher Satisfaction Survey. This form template contains all the required questions when building a survey.",
+    "activeStatus": true,
+    "dateEnd": "2024-02-01T00:00:00.000Z",
+    "instructionMessage": "Please be as honest and as accurate as you can. Your feedback is tremendously helpful to us for making the workplace better.",
+    "responses": [],
+    "questions": [
+      {
+        "id": 1,
+        "questionType": "MC",
+        "question": "Do you want this survey to be completely anonymous?",
+        "options": ["Yes", "No"],
+        "correctOption": "",
+        "imgURL": [],
+        "imgDesc": [],
+        "_id": "65316aa06abef9e233c8b88e"
+      },
+      {
+        "id": 110,
+        "questionType": "MC",
+        "question": "Are you satisfied with the benefits offered by the school/organization?",
+        "options": ["Very Dissatisfied", "Dissatisfied", "Neutral", "Sastified", "Very Sastified"],
+        "correctOption": "",
+        "imgURL": [],
+        "imgDesc": [],
+        "_id": "65316aa06abef9e233c8b88f"
+      },
+      {
+        "id": 332,
+        "questionType": "MC",
+        "question": "Are you satisfied with the compensation provided to you by the organization?",
+        "options": ["Very Dissatisfied", "Dissatisfied", "Neutral", "Satisfied", "Very Satisfied"],
+        "correctOption": "",
+        "imgURL": [],
+        "imgDesc": [],
+        "_id": "65316aa06abef9e233c8b890"
+      },
+      {
+        "id": 382,
+        "questionType": "MC",
+        "question": "Do you get appreciation for your efforts by your superiors?",
+        "options": ["Very Dissatisfied", "Dissatisfied", "Neutral", "Satisfied", "Very Satisfied"],
+        "correctOption": "",
+        "imgURL": [],
+        "imgDesc": [],
+        "_id": "65316aa06abef9e233c8b891"
+      },
+      {
+        "id": 468,
+        "questionType": "MC",
+        "question": "What do you think of flexibility of work being offered by the organization?",
+        "options": ["Very Dissatisfied", "Dissatisfied", "Neutral", "Satisfied", "Very Satisfied"],
+        "correctOption": "",
+        "imgURL": [],
+        "imgDesc": [],
+        "_id": "65316aa06abef9e233c8b892"
+      },
+      {
+        "id": 530,
+        "questionType": "MC",
+        "question": "Are you satisfied with the organization/school work environment?",
+        "options": ["Very Dissatisfied", "Dissatisfied", "Neutral", "Satisfied", "Very Satisfied"],
+        "correctOption": "",
+        "imgURL": [],
+        "imgDesc": [],
+        "_id": "65316aa06abef9e233c8b893"
+      },
+      {
+        "id": 576,
+        "questionType": "MC",
+        "question": "How realistic are your manager’s expectations at work?",
+        "options": [
+          "Extremely Realistic",
+          "Very Realistic",
+          "Moderately Realistic",
+          "Slightly Realistic",
+          "Not Realistic At All"
+        ],
+        "correctOption": "",
+        "imgURL": [],
+        "imgDesc": [],
+        "_id": "65316aa06abef9e233c8b894"
+      },
+      {
+        "id": 582,
+        "questionType": "MC",
+        "question": "How often do you feel that the tasks assigned to you by your manager make you grow professionally?",
+        "options": ["Extremely Often", "Very Often", "Moderately Often", "Slightly Often", "Not At All"],
+        "correctOption": "",
+        "imgURL": [],
+        "imgDesc": [],
+        "_id": "65316aa06abef9e233c8b895"
+      },
+      {
+        "id": 588,
+        "questionType": "MC",
+        "question": "Does your organization offer ample career growth opportunities to you?",
+        "options": ["Yes", "No", "Maybe"],
+        "correctOption": "",
+        "imgURL": [],
+        "imgDesc": [],
+        "_id": "65316aa06abef9e233c8b896"
+      },
+      {
+        "id": 998,
+        "questionType": "MC",
+        "question": "Do you think you are supervised too much, too little or supervised just the right amount?",
+        "options": ["Slightly Too much", "Just About The Right Amount", "Slightly Too Little", "Too Little"],
+        "correctOption": "",
+        "imgURL": [],
+        "imgDesc": [],
+        "_id": "65316aa06abef9e233c8b897"
+      }
+    ],
+    "_id": "65316aa06abef9e233c8b88d"
+  },
+  {
+    "surveyName": "Test",
+    "surveyOwner": "",
+    "organization": "",
+    "surveyType": "Academic",
+    "description": "",
+    "activeStatus": true,
+    "dateEnd": "2023-11-03T00:00:00.000Z",
+    "instructionMessage": "",
+    "responses": [],
+    "questions": [
+      {
+        "id": 1,
+        "questionType": "MC",
+        "question": "Test",
+        "options": ["test", "tset", "test"],
+        "correctOption": "",
+        "imgURL": [],
+        "imgDesc": [],
+        "_id": "6531957d605fb94524c174a8"
+      },
+      {
+        "id": 16,
+        "questionType": "MC",
+        "question": "Test2",
+        "options": ["test2", "test3", "test3"],
+        "correctOption": "",
+        "imgURL": [],
+        "imgDesc": [],
+        "_id": "6531957d605fb94524c174a9"
+      }
+    ],
+    "_id": "6531957d605fb94524c17489"
+  }
+]

@@ -6,15 +6,15 @@ import IUser from "../Interfaces/IUser.ts";
 import ISurvey from "../Interfaces/ISurvey.ts";
 import jwt from "jsonwebtoken";
 import express from "express";
+import SurveyModel from "../Models/SurveyModel.ts";
+import mongoose from "mongoose";
 const router = express.Router();
 
 router.get("/", async (req: express.Request, res: express.Response) => {
   try {
-    const { id }: any = jwt.verify(req.headers.authorization, process.env.JWT_SECRET);
     console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: ${req.method} - Get All Surveys`);
-    const user: IUser = await UserModel.findOne({ _id: id });
-
-    res.json(user.surveys);
+    const surveys = await SurveyModel.find();
+    res.status(200).json(surveys);
   } catch (e) {
     console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: ${e}`);
     res.status(500).json({ message: e });
@@ -24,65 +24,17 @@ router.get("/:id", async (req: express.Request, res: express.Response) => {
   const surveyId = req.params.id;
   console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: ${req.method} - Get Survey: ${surveyId}`);
   try {
-    const { id }: any = jwt.verify(req.headers.authorization, process.env.JWT_SECRET);
-    const user: IUser = await UserModel.findOne({ _id: id });
-    console.log(user.surveys);
-    const survey = user.surveys.find((survey) => survey._id.toString() === surveyId);
+    const survey = await SurveyModel.findOne({ _id: surveyId });
     console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}:${req.method} - Survey ID: ${surveyId}`);
-    console.log(survey);
-    res.json(survey);
-  } catch (e) {
-    console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: ${e}`);
-    res.status(500).json({ message: e });
-  }
-});
-router.post("/", async (req: express.Request, res: express.Response) => {
-  console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: ${req.method} - Posting User New Survey`);
-  let token = "";
-  if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
-    token = req.headers.authorization.split(" ")[1];
-    try {
-      const decodedToken: any = await jwt.verify(token, process.env.JWT_SECRET);
 
-      const user: IUser = await UserModel.findOne({ _id: decodedToken.id });
-      console.log(req.body);
-      const userNewSurveys = [...user.surveys, req.body];
-
-      await UserModel.findOneAndUpdate({ _id: decodedToken.id }, { surveys: userNewSurveys });
-      console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: User new survey successfully added`);
-      res.status(200).json({ message: "User new survey successfully added" });
-    } catch (e) {
-      console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: ${e}`);
-      res.status(500).json({ message: "Server unable to process request." });
+    if (survey) {
+      res.status(200).json(survey);
+    } else {
+      res.status(400).json({ message: "Survey Not Found" });
     }
-  }
-});
-router.delete("/:id", async (req: express.Request, res: express.Response) => {
-  const id = req.params.id;
-  console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: ${req.method} - Delete Survey: ${id}`);
-  try {
-    const survey = await Survey.deleteOne({ _id: id });
-    res.status(200).json({ message: `Survey ${id} deleted` });
   } catch (e) {
     console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: ${e}`);
     res.status(500).json({ message: e });
-  }
-});
-
-router.post("/", authenticate, async (req: express.Request, res: express.Response) => {
-  console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: ${req.method} - Uploading User Surveys`);
-  const user: IUser = req.cookies.user;
-
-  const newSurvey: ISurvey = req.body;
-  const updatedUserSurveyList = [...user.surveys];
-  updatedUserSurveyList.push(newSurvey);
-  // console.log(updatedUserSurveyList);
-  try {
-    await UserModel.findOneAndUpdate({ email: user.email }, { surveys: updatedUserSurveyList });
-    console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: User Surveys Updated`);
-    res.status(200).json({ message: "User Surveys Updated" });
-  } catch (e) {
-    console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: ${e}`);
   }
 });
 

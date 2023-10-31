@@ -14,7 +14,7 @@ const surveySchema = new mongoose.Schema<ISurvey>({
     type: [
       {
         question: String,
-        answer: String,
+        answer: [String],
       },
     ],
     default: [],

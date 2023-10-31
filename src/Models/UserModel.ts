@@ -20,10 +20,12 @@ const UserSchema = new mongoose.Schema<IUser>({
         instructionMessage: { type: String, default: "" },
         responses: {
           type: [
-            {
-              question: String,
-              answer: String,
-            },
+            [
+              {
+                question: String,
+                answer: [String],
+              },
+            ],
           ],
           default: [],
         },

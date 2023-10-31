@@ -16,7 +16,7 @@ export default interface ISurvey {
 
 interface Response {
   question: string;
-  answer: string;
+  answer: string[];
 }
 interface Question {
   id: number;

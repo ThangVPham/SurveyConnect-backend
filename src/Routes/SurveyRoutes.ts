@@ -37,5 +37,21 @@ router.get("/:id", async (req: express.Request, res: express.Response) => {
     res.status(500).json({ message: e });
   }
 });
-
+router.post("/:id", async (req: express.Request, res: express.Response) => {
+  const surveyId = req.params.id;
+  const userId = req.headers.userid;
+  try {
+    const user: IUser = await UserModel.findById({ _id: userId });
+    const survey: ISurvey = user.surveys.find((survey) => survey._id.toString() === surveyId);
+    survey.responses.push(req.body);
+    console.log(req.body);
+    console.log(survey.responses);
+    await UserModel.updateOne({ _id: userId }, user);
+    console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: ${req.method} - Survey Responses Updated`);
+    res.status(200).json({ message: "Survey Response Posted" });
+  } catch (e) {
+    console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: ${e}`);
+    res.status(500).json({ message: e });
+  }
+});
 export default router;

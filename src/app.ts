@@ -25,7 +25,7 @@ server.listen(PORT, () => {
 app.use("/api/surveys", SurveyRoutes);
 app.use("/api/user", UserRoutes);
 app.use("/", (req: express.Request, res: express.Response) => {
-  res.end({
+  res.json({
     message:
       "Thanks for checking us out. Please make sure you're using the correct API endpoints when requesting data.",
   });

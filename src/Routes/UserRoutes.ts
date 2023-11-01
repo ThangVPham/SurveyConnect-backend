@@ -16,6 +16,7 @@ router.get("/surveys", authenticate, async (req: express.Request, res: express.R
   console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}:${req.method} - Get All User's Surveys`);
   try {
     const user: IUser = req.cookies.user;
+
     if (user) {
       console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}:${req.method} - User Found: ${user._id}`);
     }
@@ -44,11 +45,13 @@ router.post("/surveys", authenticate, async (req: express.Request, res: express.
   console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: ${req.method} - Uploading User Surveys`);
   const user: IUser = req.cookies.user;
   const newSurvey: ISurvey = req.body;
+  newSurvey.surveyOwner = user._id.toString();
 
   try {
-    await SurveyModel.create(req.body);
+    await SurveyModel.create(newSurvey);
     const addedSurvey = await SurveyModel.findOne({ surveyName: newSurvey.surveyName });
     newSurvey._id = addedSurvey._id;
+
     const updatedUserSurveyList = [...user.surveys, newSurvey];
 
     await UserModel.findOneAndUpdate({ email: user.email }, { surveys: updatedUserSurveyList });
@@ -60,11 +63,16 @@ router.post("/surveys", authenticate, async (req: express.Request, res: express.
   }
 });
 
-router.delete("/surveys/:id", async (req: express.Request, res: express.Response) => {
+router.delete("/surveys/:id", authenticate, async (req: express.Request, res: express.Response) => {
   const id = req.params.id;
+  const user: IUser = req.cookies.user;
+
   console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: ${req.method} - Delete Survey: ${id}`);
   try {
-    const survey = await SurveyModel.deleteOne({ _id: id });
+    await SurveyModel.deleteOne({ _id: id });
+    const surveyIndex = user.surveys.findIndex((survey) => survey._id.toString() === id);
+    user.surveys.splice(surveyIndex, 1);
+    await UserModel.updateOne({ _id: user._id }, user);
     res.status(200).json({ message: `Survey ${id} deleted` });
   } catch (e) {
     console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")}: ${e}`);

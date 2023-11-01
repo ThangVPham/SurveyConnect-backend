@@ -1,5 +1,5 @@
 import IUser from "Interfaces/IUser.ts";
-import mongoose, { SchemaType } from "mongoose";
+import mongoose from "mongoose";
 const UserSchema = new mongoose.Schema<IUser>({
   userName: { type: String, default: "User" },
   email: String,

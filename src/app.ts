@@ -7,6 +7,18 @@ import ConnectToDb from "./DbConfig/DbConnection.ts";
 import SurveyRoutes from "./Routes/SurveyRoutes.ts";
 import UserRoutes from "./Routes/UserRoutes.ts";
 import moment from "moment";
+const survey_url = "https://surveyconnect-backend.onrender.com/api/surveys";
+const id = setInterval(() => {
+  WakeServer();
+}, 840000);
+async function WakeServer() {
+  try {
+    const survey_res = await fetch(survey_url);
+    console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")} - Survey Connect Pinged`);
+  } catch (e) {
+    console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")} - ${e}`);
+  }
+}
 const app = express();
 app.use(express.json());
 app.use(
@@ -31,16 +43,3 @@ app.use("/", (req: express.Request, res: express.Response) => {
       "Thanks for checking us out. Please make sure you're using the correct API endpoints when requesting data.",
   });
 });
-
-const survey_url = "https://surveyconnect-backend.onrender.com/api/surveys";
-const id = setInterval(() => {
-  WakeServer();
-}, 840000);
-async function WakeServer() {
-  try {
-    const survey_res = await fetch(survey_url);
-    console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")} - Survey Connect Pinged`);
-  } catch (e) {
-    console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")} - ${e}`);
-  }
-}

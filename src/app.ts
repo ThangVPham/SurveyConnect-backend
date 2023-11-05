@@ -7,13 +7,14 @@ import ConnectToDb from "./DbConfig/DbConnection.ts";
 import SurveyRoutes from "./Routes/SurveyRoutes.ts";
 import UserRoutes from "./Routes/UserRoutes.ts";
 import moment from "moment";
+import axios from "axios";
 const survey_url = "https://surveyconnect-backend.onrender.com/api/surveys";
 const id = setInterval(() => {
   WakeServer();
-}, 60000);
+}, 5000);
 async function WakeServer() {
   try {
-    const survey_res = await fetch(survey_url);
+    const survey_res = await axios.get(survey_url);
     console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")} - Survey Connect Pinged`);
   } catch (e) {
     console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")} - ${e}`);

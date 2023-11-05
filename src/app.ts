@@ -9,18 +9,6 @@ import UserRoutes from "./Routes/UserRoutes.ts";
 import moment from "moment";
 import axios from "axios";
 
-const survey_url = "https://surveyconnect-backend.onrender.com/api/surveys";
-const id = setInterval(() => {
-  WakeServer();
-}, 840000);
-async function WakeServer() {
-  try {
-    const survey_res = await axios.get(survey_url);
-    console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")} - Survey Connect Pinged`);
-  } catch (e) {
-    console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")} - ${e}`);
-  }
-}
 const app = express();
 app.use(express.json());
 app.use(
@@ -32,9 +20,15 @@ app.use(compression());
 app.use(cookieParser());
 const server = http.createServer(app);
 const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => {
-  ConnectToDb();
+const survey_url = "https://surveyconnect-backend.onrender.com/api/surveys";
+let id: ReturnType<typeof setTimeout>;
+server.listen(PORT, async () => {
+  await ConnectToDb();
   console.log(`Server running on port ${PORT}`);
+
+  id = setInterval(() => {
+    WakeServer();
+  }, 840000);
 });
 
 app.use("/api/surveys", SurveyRoutes);
@@ -45,3 +39,12 @@ app.use("/", (req: express.Request, res: express.Response) => {
       "Thanks for checking us out. Please make sure you're using the correct API endpoints when requesting data.",
   });
 });
+async function WakeServer() {
+  try {
+    const survey_res = await axios.get(survey_url);
+    console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")} - Survey Connect Pinged`);
+  } catch (e) {
+    clearInterval(id);
+    console.log(`${moment().format("MMMM Do YYYY, h:mm:ss a")} - ${e}`);
+  }
+}

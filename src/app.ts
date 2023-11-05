@@ -10,7 +10,7 @@ import moment from "moment";
 const survey_url = "https://surveyconnect-backend.onrender.com/api/surveys";
 const id = setInterval(() => {
   WakeServer();
-}, 840000);
+}, 60000);
 async function WakeServer() {
   try {
     const survey_res = await fetch(survey_url);
